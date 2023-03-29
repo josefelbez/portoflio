@@ -1,91 +1,37 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+'use client'
 
-const inter = Inter({ subsets: ['latin'] })
+import Image from "next/image"
+
+import { Raleway } from 'next/font/google'
+
+import { motion, LazyMotion, domAnimation, m } from "framer-motion"
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  weight: ['300', '400', '700']
+})
+
+import {BsGithub, BsLinkedin} from 'react-icons/bs'
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    <main className="bg-zinc-100">
+      <section className="px-5 h-screen w-full flex flex-col gap-10 justify-center items-center text-white bg-gradient-to-b from-zinc-600 to-zinc-900">
+        <LazyMotion features={domAnimation}>
+          <m.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} className="rounded-full overflow-hidden aspect-square">
+            <Image className="max-w-[150px]  md:max-w-[250px] object-contain" alt="My Photo" src="/me.jpg" width={350} height={350} priority />
+          </m.div>
+        </LazyMotion>
+        <hgroup className={`${raleway.className} text-center space-y-5 md:space-y-10`}>
+          <h2 className="text-2xl md:text-5xl font-bold">Welcome to my portfolio!</h2>
+          <h3 className="text-md md:text-xl">My name is Josef and i'm a front end developer!</h3>
+        </hgroup>
+        <ul className="flex gap-5 text-2xl hover:children:text-zinc-300">
+          <li> <Link href="http://linkedin.com/in/josefelbez" target="_blank"> <BsLinkedin /> </Link> </li>
+          <li> <Link href="http://github.com/josef.elbez" target="_blank"> <BsGithub/> </Link> </li>
+        </ul>
+      </section>
     </main>
   )
 }
