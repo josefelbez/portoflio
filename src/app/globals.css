@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+section{
+    @apply first-of-type:h-screen first-of-type:justify-center first-of-type:items-center first-of-type:flex bg-zinc-100 first-of-type:bg-gradient-to-b first-of-type:from-zinc-800 first-of-type:to-zinc-900
+}
